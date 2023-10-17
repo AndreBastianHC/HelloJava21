@@ -14,10 +14,10 @@ class SequencedCollectionsTest {
         List<String> list = List.of("a", "b", "c", "d", "e", "f");
 
         assertEquals("a", list.getFirst());
-        System.out.println(list.getFirst());
+        System.out.println(STR."First: \{list.getFirst()}");
 
         assertEquals("f", list.getLast());
-        System.out.println(list.getLast());
+        System.out.println(STR."Last: \{list.getLast()}");
     }
 
     @Test
@@ -27,12 +27,12 @@ class SequencedCollectionsTest {
         LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(list);
 
         assertEquals("a", linkedHashSet.getFirst());
-        System.out.println(linkedHashSet.getFirst());
+        System.out.println(STR."First: \{linkedHashSet.getFirst()}");
         //Old
         assertEquals("a", linkedHashSet.iterator().next());
 
         assertEquals("f", linkedHashSet.getLast());
-        System.out.println(linkedHashSet.getLast());
+        System.out.println(STR."Last: \{linkedHashSet.getLast()}");
         //Old
         assertEquals("f", linkedHashSet.toArray()[linkedHashSet.toArray().length-1]);
 
@@ -40,10 +40,10 @@ class SequencedCollectionsTest {
         linkedHashSet.removeLast();
 
         assertEquals("b", linkedHashSet.getFirst());
-        System.out.println(linkedHashSet.getFirst());
+        System.out.println(STR."First after remove: \{linkedHashSet.getFirst()}");
 
         assertEquals("e", linkedHashSet.getLast());
-        System.out.println(linkedHashSet.getLast());
+        System.out.println(STR."Last after remove: \{linkedHashSet.getLast()}");
 
     }
 
