@@ -25,8 +25,8 @@ class RecordPatternsTest {
         assertEquals("ChildKid", patternMatchingInstanceof(parentRecord));
         System.out.println(patternMatchingInstanceof(parentRecord));
 
-        assertEquals("no match", patternMatchingInstanceof(null));
-        System.out.println(patternMatchingInstanceof(null));
+        assertEquals("no match", patternMatchingInstanceof(5));
+        System.out.println(patternMatchingInstanceof(5));
     }
 
     String patternMatchingInstanceof(Object object){
@@ -47,5 +47,34 @@ class RecordPatternsTest {
             return childString + kidString;
 
         return "no match";
+    }
+
+    @Test
+    void recordPatternMatchingForSwitchTest(){
+
+        ChildRecord childRecord = new ChildRecord(10, "Child", true);
+        KidRecord kidRecord = new KidRecord(20, "Kid");
+        ParentRecord parentRecord = new ParentRecord(childRecord, kidRecord);
+
+        assertEquals("Child", patternMatchingForSwitchTest(childRecord));
+        System.out.println(patternMatchingForSwitchTest(childRecord));
+
+        assertEquals("Kid", patternMatchingForSwitchTest(kidRecord));
+        System.out.println(patternMatchingForSwitchTest(kidRecord));
+
+        assertEquals("ChildKid", patternMatchingForSwitchTest(parentRecord));
+        System.out.println(patternMatchingForSwitchTest(parentRecord));
+
+        assertEquals("no match", patternMatchingForSwitchTest(5));
+        System.out.println(patternMatchingForSwitchTest(5));
+    }
+
+    String patternMatchingForSwitchTest(Object object){
+        switch (object) {
+            case ChildRecord(int number, String string, boolean bool) -> { return string; }
+            case KidRecord(int number, String string) -> {return string; }
+            case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
+            default -> { return "no match"; }
+        }
     }
 }
