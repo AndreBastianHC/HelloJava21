@@ -1,5 +1,6 @@
 package features;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import records.ChildRecord;
 import records.KidRecord;
@@ -40,11 +41,11 @@ class RecordPatternsTest {
         if(object instanceof ParentRecord(ChildRecord childRecord, KidRecord kidRecord))
             return childRecord.string() + kidRecord.string();
 
-        if (object instanceof ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)))
-            return childString + kidString;
+/*        if (object instanceof ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)))
+            return childString + kidString;*/
 
-        if (object instanceof ParentRecord(ChildRecord(_, String childString, _), KidRecord(_, String kidString)))
-            return childString + kidString;
+/*        if (object instanceof ParentRecord(ChildRecord(_, String childString, _), KidRecord(_, String kidString)))
+            return childString + kidString;*/
 
         return "no match";
     }
@@ -69,11 +70,12 @@ class RecordPatternsTest {
         System.out.println(patternMatchingForSwitchTest(5));
     }
 
-    String patternMatchingForSwitchTest(Object object){
+    String patternMatchingForSwitchTest(@NotNull Object object){
         switch (object) {
             case ChildRecord(int number, String string, boolean bool) -> { return string; }
             case KidRecord(int number, String string) -> {return string; }
             case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
+            //case ParentRecord(ChildRecord(_,var childString,_),_) -> {return childString + "_"; }
             default -> { return "no match"; }
         }
     }
