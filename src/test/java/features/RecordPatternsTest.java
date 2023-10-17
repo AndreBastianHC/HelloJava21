@@ -3,6 +3,7 @@ package features;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import records.ChildRecord;
+import records.ExampleRecord;
 import records.KidRecord;
 import records.ParentRecord;
 
@@ -49,6 +50,32 @@ class RecordPatternsTest {
 
         return "no match";
     }
+
+    @Test
+    void recordPatternMatchingForSwitchInterfaceTest(){
+
+        ChildRecord childRecord = new ChildRecord(10, "Child", true);
+        KidRecord kidRecord = new KidRecord(20, "Kid");
+        ParentRecord parentRecord = new ParentRecord(childRecord, kidRecord);
+
+        assertEquals("Child", patternMatchingForSwitchInterface(childRecord));
+        System.out.println(patternMatchingForSwitchInterface(childRecord));
+
+        assertEquals("Kid", patternMatchingForSwitchInterface(kidRecord));
+        System.out.println(patternMatchingForSwitchInterface(kidRecord));
+
+        assertEquals("ChildKid", patternMatchingForSwitchInterface(parentRecord));
+        System.out.println(patternMatchingForSwitchInterface(parentRecord));
+    }
+
+    String patternMatchingForSwitchInterface(ExampleRecord exampleRecord){
+        switch (exampleRecord) {
+            case ChildRecord(int number, String string, boolean bool) -> { return string; }
+            case KidRecord(int number, String string) -> {return string; }
+            case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
+        }
+    }
+
 
     @Test
     void recordPatternMatchingForSwitchTest(){

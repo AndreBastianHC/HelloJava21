@@ -1,4 +1,4 @@
 package records;
 
-public record KidRecord (int number, String string){
+public record KidRecord (int number, String string) implements ExampleRecord {
 }
