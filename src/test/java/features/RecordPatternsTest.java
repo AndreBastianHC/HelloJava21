@@ -7,10 +7,11 @@ import records.ParentRecord;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RecordPatterns {
+class RecordPatternsTest {
 
     @Test
     void recordPatternMatchingForInstanceOfTest(){
+
         ChildRecord childRecord = new ChildRecord(10, "Child", true);
         KidRecord kidRecord = new KidRecord(20, "Kid");
         ParentRecord parentRecord = new ParentRecord(childRecord, kidRecord);
