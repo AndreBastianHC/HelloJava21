@@ -2,7 +2,6 @@ package features;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,5 +49,24 @@ class StringsTest {
         stringParts = string.splitWithDelimiters("t", 3);
         System.out.println(STR."3 splits: \{Arrays.stream(stringParts).toList()}");
         assertEquals(List.of("Wir spal","t", "en diesen S", "t", "ring in verschiedene Strings"), Arrays.stream(stringParts).toList());
+    }
+
+    @Test
+    void repeatTest(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.repeat("Dieser String soll wiederholt werden. ", 2);
+        assertEquals("Dieser String soll wiederholt werden. Dieser String soll wiederholt werden. ", stringBuilder.toString());
+        System.out.println(STR."2 repeats: \{stringBuilder}");
+
+        stringBuilder = new StringBuilder();
+        stringBuilder.repeat('?', 10);
+        assertEquals("??????????", stringBuilder.toString());
+        System.out.println(STR."10 repeats: \{stringBuilder}");
+
+        stringBuilder = new StringBuilder();
+        stringBuilder.repeat(0x1f600, 5);
+        String smiley = Character.toString(0x1f600);
+        assertEquals(STR."\{smiley}\{smiley}\{smiley}\{smiley}\{smiley}" , stringBuilder.toString());
+        System.out.println(STR."5 repeats: \{stringBuilder}");
     }
 }
