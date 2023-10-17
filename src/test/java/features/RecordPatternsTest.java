@@ -25,8 +25,8 @@ class RecordPatternsTest {
         assertEquals("ChildKid", patternMatchingInstanceof(parentRecord));
         System.out.println(patternMatchingInstanceof(parentRecord));
 
-        assertEquals("no match", patternMatchingInstanceof(5));
-        System.out.println(patternMatchingInstanceof(5));
+        assertEquals("no match", patternMatchingInstanceof(null));
+        System.out.println(patternMatchingInstanceof(null));
     }
 
     String patternMatchingInstanceof(Object object){
