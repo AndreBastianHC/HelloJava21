@@ -73,6 +73,7 @@ class RecordPatternsTest {
             case ChildRecord(int number, String string, boolean bool) -> { return string; }
             case KidRecord(int number, String string) -> {return string; }
             case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
+            /*case ParentRecord(ChildRecord(_,var childString,_),_) -> { return childString + " unnamed variable"; }*/
         }
     }
 
