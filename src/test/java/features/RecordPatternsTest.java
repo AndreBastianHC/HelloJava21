@@ -48,6 +48,12 @@ class RecordPatternsTest {
         return "no match";
     }
 
+    String patternMatchingInstanceofOld(Object object) {
+        if(object instanceof ChildRecord childRecord)
+            return childRecord.string();
+        return "no match";
+    }
+
     @Test
     void recordPatternMatchingForSwitchTest(){
 
@@ -55,25 +61,32 @@ class RecordPatternsTest {
         KidRecord kidRecord = new KidRecord(20, "Kid");
         ParentRecord parentRecord = new ParentRecord(childRecord, kidRecord);
 
-        assertEquals("Child", patternMatchingForSwitchTest(childRecord));
-        System.out.println(patternMatchingForSwitchTest(childRecord));
+        assertEquals("Child", recordPatternMatchingForSwitch(childRecord));
+        System.out.println(recordPatternMatchingForSwitch(childRecord));
 
-        assertEquals("Kid", patternMatchingForSwitchTest(kidRecord));
-        System.out.println(patternMatchingForSwitchTest(kidRecord));
+        assertEquals("Kid", recordPatternMatchingForSwitch(kidRecord));
+        System.out.println(recordPatternMatchingForSwitch(kidRecord));
 
-        assertEquals("ChildKid", patternMatchingForSwitchTest(parentRecord));
-        System.out.println(patternMatchingForSwitchTest(parentRecord));
+        assertEquals("ChildKid", recordPatternMatchingForSwitch(parentRecord));
+        System.out.println(recordPatternMatchingForSwitch(parentRecord));
 
-        assertEquals("no match", patternMatchingForSwitchTest(5));
-        System.out.println(patternMatchingForSwitchTest(5));
+        assertEquals("no match", recordPatternMatchingForSwitch(5));
+        System.out.println(recordPatternMatchingForSwitch(5));
     }
 
-    String patternMatchingForSwitchTest(@NotNull Object object){
+    String recordPatternMatchingForSwitch(@NotNull Object object){
         switch (object) {
             case ChildRecord(int number, String string, boolean bool) -> { return string; }
             case KidRecord(int number, String string) -> {return string; }
             case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
             //case ParentRecord(ChildRecord(_,var childString,_),_) -> {return childString + "unnamed variable"; }
+            default -> { return "no match"; }
+        }
+    }
+
+    String recordPatternMatchingForSwitchOld(@NotNull Object object){
+        switch (object) {
+            case ChildRecord childRecord -> { return childRecord.string(); }
             default -> { return "no match"; }
         }
     }

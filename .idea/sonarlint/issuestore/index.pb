@@ -30,9 +30,19 @@ T
 $src/main/java/records/KidRecord.java,3\a\3a87ae74d4425ae733f78512e290fb2f4d42d61d
 W
 'src/main/java/records/ParentRecord.java,9\9\9921ef2a4627228453a9dfefd9b970fe50071bd7
-Z
-*src/test/java/features/VirtualThreads.java,d\d\dd6919590d29a85ccf3901fa5239862488061aad
 X
 (src/main/java/records/ExampleRecord.java,0\d\0de00234e49655291bb4f18b315cd93f84c8dce3
 ^
 .src/test/java/features/RecordPatternsTest.java,e\1\e1ee327862c156d0e5118a4f1ca3e71f80ea8934
+N
+src/main/java/records/Cat.java,8\6\869820920b87aff0ec9f8c610c7bb58ebab034d6
+N
+src/main/java/records/Dog.java,4\e\4e81a97adee2e641de1211531b633479eb672982
+Q
+!src/main/java/records/Mammal.java,5\0\50ea1a0d5660b2c5239ead75ef59a4775db1fe82
+S
+#src/main/java/records/PetOwner.java,d\e\de56f410f2d58d9777168cfee2c58f0d44ffb0a1
+P
+ src/main/java/records/Horse.java,a\4\a45d7c3fa793040d1fefa36f771221fdb3b771f3
+^
+.src/test/java/features/VirtualThreadsTest.java,f\a\faca5d657cd855eb633cf594f2f228aeb2b3e7c6

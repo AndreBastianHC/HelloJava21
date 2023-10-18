@@ -12,7 +12,7 @@ class StringsTest {
     @Test
     void indexOfTest(){
         String string1 = "Wir suchen den Index eines erstmalig auftretenden Substrings in einem Teilbereich dieses Strings.";
-        int substringIndex = string1.indexOf("Substring", 0, string1.length()-1);
+        int substringIndex = string1.indexOf("Substring", 0, string1.length()-1);;
 
         assertEquals(-1, string1.indexOf("Substring", 50, 58));
         assertEquals(-1, string1.indexOf("Substring", 51, 59));
@@ -40,10 +40,12 @@ class StringsTest {
     @Test
     void splitWithDelimitersTest(){
         String string = "Wir spalten diesen String in verschiedene Strings";
-
         String[] stringParts = string.splitWithDelimiters("t", 4);
+        String[] stringParts2 = string.split("t",4);
+
         assertEquals(List.of("Wir spal","t", "en diesen S", "t", "ring in verschiedene S", "t", "rings"), Arrays.stream(stringParts).toList());
         System.out.println(STR."4 splits: \{Arrays.stream(stringParts).toList()}");
+        System.out.println(STR."4 splits ohne Trennzeichen: \{Arrays.stream(stringParts2).toList()}");
 
         stringParts = string.splitWithDelimiters("t", 3);
         assertEquals(List.of("Wir spal","t", "en diesen S", "t", "ring in verschiedene Strings"), Arrays.stream(stringParts).toList());
