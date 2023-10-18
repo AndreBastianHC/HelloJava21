@@ -2,10 +2,7 @@ package features;
 
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
-import records.ChildRecord;
-import records.ExampleRecord;
-import records.KidRecord;
-import records.ParentRecord;
+import records.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -88,22 +85,50 @@ class RecordPatternsTest {
         KidRecord kidRecord = new KidRecord(20, "Kid");
         ParentRecord parentRecord = new ParentRecord(childRecord, kidRecord);
 
-        assertEquals("Child", patternMatchingForSwitchInterface(childRecord));
-        System.out.println(patternMatchingForSwitchInterface(childRecord));
+        assertEquals("Child", recordPatternMatchingForSwitchInterface(childRecord));
+        System.out.println(recordPatternMatchingForSwitchInterface(childRecord));
 
-        assertEquals("Kid", patternMatchingForSwitchInterface(kidRecord));
-        System.out.println(patternMatchingForSwitchInterface(kidRecord));
+        assertEquals("Kid", recordPatternMatchingForSwitchInterface(kidRecord));
+        System.out.println(recordPatternMatchingForSwitchInterface(kidRecord));
 
-        assertEquals("ChildKid", patternMatchingForSwitchInterface(parentRecord));
-        System.out.println(patternMatchingForSwitchInterface(parentRecord));
+        assertEquals("ChildKid", recordPatternMatchingForSwitchInterface(parentRecord));
+        System.out.println(recordPatternMatchingForSwitchInterface(parentRecord));
     }
 
-    String patternMatchingForSwitchInterface(ExampleRecord exampleRecord){
+    String recordPatternMatchingForSwitchInterface(ExampleRecord exampleRecord){
         switch (exampleRecord) {
             case ChildRecord(int number, String string, boolean bool) -> { return string; }
             case KidRecord(int number, String string) -> {return string; }
             case ParentRecord(ChildRecord(int childNumber, String childString, boolean childBool), KidRecord(int kidNumber, String kidString)) -> { return childString+kidString; }
             /*case ParentRecord(ChildRecord(_,var childString,_),_) -> { return childString + " unnamed variable"; }*/
         }
+    }
+
+    @Test
+    void recordPatternMatchingForSwitchInterfaceOfChildrenTest(){
+        Mammal dog = new Dog();
+        Mammal cat = new Cat();
+        Mammal horse = new Horse();
+        PetOwner dogOwner = new PetOwner(dog);
+        PetOwner catOwner = new PetOwner(cat);
+        PetOwner horseOwner = new PetOwner(horse);
+
+        assertEquals("wuff",recordPatternMatchingForSwitchInterfaceOfChildren(dogOwner));
+        System.out.println(recordPatternMatchingForSwitchInterfaceOfChildren(dogOwner));
+
+        assertEquals("miau",recordPatternMatchingForSwitchInterfaceOfChildren(catOwner));
+        System.out.println(recordPatternMatchingForSwitchInterfaceOfChildren(catOwner));
+
+        assertEquals("wieher",recordPatternMatchingForSwitchInterfaceOfChildren(horseOwner));
+        System.out.println(recordPatternMatchingForSwitchInterfaceOfChildren(horseOwner));
+
+    }
+
+    String recordPatternMatchingForSwitchInterfaceOfChildren(PetOwner petOwner){
+       switch (petOwner){
+           case PetOwner(Dog dog) -> { return "wuff"; }
+           case PetOwner(Cat cat) -> { return "miau"; }
+           case PetOwner(Horse horse) -> { return "wieher"; }
+       }
     }
 }
