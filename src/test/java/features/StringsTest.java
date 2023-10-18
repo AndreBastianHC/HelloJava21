@@ -65,7 +65,7 @@ class StringsTest {
         stringBuilder = new StringBuilder();
         stringBuilder.repeat(0x1f600, 5);
         String smiley = Character.toString(0x1f600);
-        assertEquals(STR."\{smiley}\{smiley}\{smiley}\{smiley}\{smiley}" , stringBuilder.toString());
+        assertEquals(STR."\{smiley}\{smiley}\{smiley}\{smiley}\{smiley}", stringBuilder.toString());
         System.out.println(STR."5 repeats: \{stringBuilder}");
     }
 }
