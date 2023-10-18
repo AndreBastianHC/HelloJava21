@@ -28,13 +28,9 @@ class SequencedCollectionsTest {
 
         assertEquals("a", linkedHashSet.getFirst());
         System.out.println(STR."First: \{linkedHashSet.getFirst()}");
-        //Old
-        assertEquals("a", linkedHashSet.iterator().next());
 
         assertEquals("f", linkedHashSet.getLast());
         System.out.println(STR."Last: \{linkedHashSet.getLast()}");
-        //Old
-        assertEquals("f", linkedHashSet.toArray()[linkedHashSet.toArray().length-1]);
 
         linkedHashSet.removeFirst();
         linkedHashSet.removeLast();
