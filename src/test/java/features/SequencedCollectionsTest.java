@@ -2,6 +2,7 @@ package features;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.Array;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,13 +12,23 @@ class SequencedCollectionsTest {
     @Test
     void listTest(){
 
-        List<String> list = List.of("a", "b", "c", "d", "e", "f");
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("a","b","c","d","e","f"));
+        /*List<String> list = List.of("a","b","c","d","e","f");*/
 
         assertEquals("a", list.getFirst());
         System.out.println(STR."First: \{list.getFirst()}");
 
         assertEquals("f", list.getLast());
         System.out.println(STR."Last: \{list.getLast()}");
+
+        assertEquals("a", list.removeFirst());
+        assertEquals("b", list.getFirst());
+        System.out.println(STR."First after remove: \{list.getFirst()}");
+
+        assertEquals("f", list.removeLast());
+        assertEquals("e", list.getLast());
+        System.out.println(STR."Last after remove: \{list.getLast()}");
+
     }
 
     @Test
